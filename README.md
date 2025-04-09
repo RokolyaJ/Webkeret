@@ -1,4 +1,5 @@
-# Gobusticket
+Projekt neve: GoBusTicket
+Téma:Buszjegy lefoglaló oldal
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.14.
 
