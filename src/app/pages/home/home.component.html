@@ -1,0 +1,43 @@
+<div class="search-section">
+  <div class="search-container">
+
+    <mat-card>
+      <mat-card-title>Keresés</mat-card-title>
+      <mat-card-content>
+
+    
+        <form (ngSubmit)="onSearch()" #searchForm="ngForm">
+
+          <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+            <mat-label>Honnan</mat-label>
+            <input matInput type="text" [(ngModel)]="from" name="from" placeholder="Pl. Budapest" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+            <mat-label>Hová</mat-label>
+            <input matInput type="text" [(ngModel)]="to" name="to" placeholder="Pl. Berlin" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+            <mat-label>Oda</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="date" name="date" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+            <mat-label>Utasok</mat-label>
+            <input matInput type="number" [(ngModel)]="passengers" name="passengers" min="1" required>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="submit" style="width: 100%; margin-top: 16px;" [disabled]="searchForm.invalid">
+            Keresés
+          </button>
+
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>

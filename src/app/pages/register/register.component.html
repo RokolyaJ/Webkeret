@@ -1,0 +1,89 @@
+<div class="register-container">
+  <mat-card appHoverHighlight>
+    <mat-card-title>Regisztráció</mat-card-title>
+    <mat-card-content>
+
+      <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
+
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+          <mat-label>Név</mat-label>
+          <input 
+            matInput 
+            type="text" 
+            name="name" 
+            [(ngModel)]="name" 
+            required 
+            #nameInput="ngModel"
+            appAutoFocus> 
+          <mat-error *ngIf="nameInput.invalid && nameInput.touched">
+            A név megadása kötelező!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+          <mat-label>Email</mat-label>
+          <input 
+            matInput 
+            type="email" 
+            name="email" 
+            [(ngModel)]="email" 
+            required 
+            email 
+            #emailInput="ngModel">
+          <mat-error *ngIf="emailInput.invalid && emailInput.touched">
+            <span *ngIf="emailInput.errors?.['required']">Az email megadása kötelező!</span>
+            <span *ngIf="emailInput.errors?.['email']">Érvénytelen email formátum!</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 25px;">
+          <mat-label>Jelszó</mat-label>
+          <input 
+            matInput 
+            [type]="hidePassword ? 'password' : 'text'"
+            name="password" 
+            [(ngModel)]="password" 
+            required 
+            minlength="6" 
+            #passwordInput="ngModel">
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button"
+            style="margin-top: 0px;">
+            <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="passwordInput.invalid && passwordInput.touched">
+            <span *ngIf="passwordInput.errors?.['required']">A jelszó megadása kötelező!</span>
+            <span *ngIf="passwordInput.errors?.['minlength']">A jelszónak legalább 6 karakteresnek kell lennie!</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 20px;">
+          <mat-label>Jelszó megerősítése</mat-label>
+          <input 
+            matInput 
+            [type]="hideConfirmPassword ? 'password' : 'text'"
+            name="confirmPassword" 
+            [(ngModel)]="confirmPassword" 
+            required 
+            #confirmInput="ngModel">
+          <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" type="button"
+          style="margin-top: 0px;">
+            <mat-icon>{{ hideConfirmPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="confirmInput.touched && confirmPassword !== password">
+            A jelszavak nem egyeznek!
+          </mat-error>
+        </mat-form-field>
+
+        <button 
+          mat-raised-button 
+          color="primary" 
+          type="submit" 
+          [disabled]="form.invalid || password !== confirmPassword">
+          Regisztrálok
+        </button>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

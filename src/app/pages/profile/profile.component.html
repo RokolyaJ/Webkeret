@@ -1,0 +1,38 @@
+<div class="profile-container" *ngIf="user">
+  <mat-card>
+    <mat-card-title>Profilom</mat-card-title>
+    <mat-card-content>
+
+      <div class="profile-picture" style="text-align: center; margin-bottom: 16px;">
+        <img [src]="defaultProfilePic" alt="Profilkép" style="width: 100px; height: 100px; border-radius: 50%;" />
+      </div>
+
+      <p style="text-align: center; font-weight: bold;">{{ user?.email }}</p>
+
+      <!-- 🔥 FORM kezdete -->
+      <form (ngSubmit)="changePassword()" #passwordForm="ngForm" class="password-section" style="margin-top: 24px;">
+        <h3>Jelszó módosítása</h3>
+
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+          <mat-label>Jelenlegi jelszó</mat-label>
+          <input matInput type="password" name="currentPassword" [(ngModel)]="currentPassword" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+          <mat-label>Új jelszó</mat-label>
+          <input matInput type="password" name="newPassword" [(ngModel)]="newPassword" required minlength="6">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+          <mat-label>Új jelszó megerősítése</mat-label>
+          <input matInput type="password" name="confirmNewPassword" [(ngModel)]="confirmNewPassword" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="passwordForm.invalid || saving">
+          Jelszó módosítása
+        </button>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

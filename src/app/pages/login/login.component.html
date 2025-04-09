@@ -1,0 +1,29 @@
+<div class="login-container">
+  <mat-card appHoverHighlight>
+    <mat-card-title>Bejelentkezés</mat-card-title>
+    <mat-card-content>
+
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="email" [(ngModel)]="email" required appAutoFocus>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+          <mat-label>Jelszó</mat-label>
+          <input matInput type="password" name="password" [(ngModel)]="password" required>
+        </mat-form-field>
+        <button 
+          mat-raised-button 
+          color="primary" 
+          type="submit" 
+          [disabled]="form.invalid" 
+          class="login-button">
+          Bejelentkezés
+        </button>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

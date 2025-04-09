@@ -1,0 +1,99 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+}
+
+mat-card-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #2e8b57;
+}
+
+.profile-picture {
+  text-align: center;
+  margin-bottom: 16px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #2e8b57;
+  }
+}
+
+p {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.password-section {
+  margin-top: 24px;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2e8b57;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: none;
+    background-color: #2e8b57; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: #3ba166; 
+  }
+
+  button:disabled {
+    background-color: #ccc; 
+    color: #666;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 480px) {
+  mat-card {
+    padding: 16px;
+  }
+
+  mat-card-title {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}

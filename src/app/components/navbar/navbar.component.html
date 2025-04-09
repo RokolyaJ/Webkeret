@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="navbar">
+  <span class="logo" routerLink="/" style="cursor: pointer;">
+    GoBusTicket
+  </span>
+
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="!isLoggedIn; else loggedIn">
+    <a mat-button routerLink="/login">Bejelentkezés</a>
+    <a mat-button routerLink="/register">Regisztráció</a>
+  </ng-container>
+
+  <ng-template #loggedIn>
+    <a mat-icon-button routerLink="/profile" title="Profil" style="margin-right: 10px;">
+      <img 
+        [src]="profilePictureUrl" 
+        alt="Profilkép" 
+        style="width: 32px; height: 32px; border-radius: 50%;" 
+      />
+    </a>
+    <a mat-button routerLink="/bookings">Foglalásaim</a>
+    <button mat-raised-button color="warn" (click)="logout()">
+      Kijelentkezés
+    </button>
+  </ng-template>
+</mat-toolbar>

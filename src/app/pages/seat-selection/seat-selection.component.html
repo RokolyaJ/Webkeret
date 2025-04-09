@@ -1,0 +1,22 @@
+<div class="bus-background">
+  <div class="seat-overlay">
+    <div
+      *ngFor="let seat of seatMap"
+      class="seat"
+      [ngClass]="{
+        'selected': seat.selected,
+        'occupied': seat.occupied
+      }"
+      [style.top]="seat.top"
+      [style.left]="seat.left"
+      (click)="toggleSeat(seat)"
+    ></div>
+  </div>
+</div>
+
+<div class="bottom-panel">
+  <p>Kiválasztott helyek: {{ selectedSeats.length ? selectedSeats.join(', ') : 'nincs' }}</p>
+  <button (click)="confirmSeats()" [disabled]="selectedSeats.length !== maxSelectable">
+    Megerősítés
+  </button>
+</div>

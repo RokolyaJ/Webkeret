@@ -1,0 +1,51 @@
+.search-section {
+  background-image: url('/assets/images/busbackground.png');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+}
+
+
+.search-container {
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%); 
+  top: 290px; 
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+}
+mat-card {
+  width: 100%;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+mat-card-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+mat-form-field {
+  flex: 1 1 200px;
+  min-width: 180px;
+}
+button[mat-raised-button] {
+  flex: 1 1 100%;
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+@media (max-width: 800px) {
+  mat-card-content {
+    flex-direction: column;
+  }
+
+  button[mat-raised-button] {
+    width: 100%;
+  }
+}
