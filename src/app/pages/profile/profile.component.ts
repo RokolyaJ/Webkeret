@@ -3,6 +3,12 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+interface AppUser {
+  uid: string;
+  email: string;
+  displayName?: string;
+  photoURL?: string;
+}
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +16,7 @@ import 'firebase/compat/auth';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user: any = null;
+  user: AppUser | null = null;
   defaultProfilePic = '/assets/images/profile.png';
 
   currentPassword = '';

@@ -14,7 +14,7 @@
             [(ngModel)]="name" 
             required 
             #nameInput="ngModel"
-            appAutoFocus> 
+            appAutoFocus>
           <mat-error *ngIf="nameInput.invalid && nameInput.touched">
             A név megadása kötelező!
           </mat-error>

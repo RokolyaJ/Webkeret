@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -15,9 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatDatepickerModule } from '@angular/material/datepicker';   
-import { MatNativeDateModule } from '@angular/material/core';        
-import { MatSidenavModule } from '@angular/material/sidenav';        
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -31,8 +32,9 @@ import { SeatCountPipe } from './pipes/seat-count.pipe';
 import { FriendlyDatePipe } from './pipes/friendly-date.pipe';
 import { AutoFocusDirective } from './directives/auto-focus.directive';
 import { HoverHighlightDirective } from './directives/hover-highlight.directive';
-
-
+import { registerLocaleData } from '@angular/common';
+import localeHu from '@angular/common/locales/hu';
+registerLocaleData(localeHu);
 
 @NgModule({
   declarations: [
@@ -48,7 +50,7 @@ import { HoverHighlightDirective } from './directives/hover-highlight.directive'
     SeatCountPipe,
     FriendlyDatePipe,
     AutoFocusDirective,
-    HoverHighlightDirective  
+    HoverHighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,7 @@ import { HoverHighlightDirective } from './directives/hover-highlight.directive'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    BrowserAnimationsModule,   
+    BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
@@ -66,11 +68,14 @@ import { HoverHighlightDirective } from './directives/hover-highlight.directive'
     MatCardModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatDatepickerModule,     
-    MatNativeDateModule,      
-    MatSidenavModule          
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSidenavModule
   ],
-  providers: [],
+  providers: [
+    
+    { provide: LOCALE_ID, useValue: 'hu-HU' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

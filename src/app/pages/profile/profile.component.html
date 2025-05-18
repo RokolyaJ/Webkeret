@@ -7,9 +7,7 @@
         <img [src]="defaultProfilePic" alt="Profilkép" style="width: 100px; height: 100px; border-radius: 50%;" />
       </div>
 
-      <p style="text-align: center; font-weight: bold;">{{ user?.email }}</p>
-
-      <!-- 🔥 FORM kezdete -->
+      <p style="text-align: center; font-weight: bold;">{{ user.email }}</p>
       <form (ngSubmit)="changePassword()" #passwordForm="ngForm" class="password-section" style="margin-top: 24px;">
         <h3>Jelszó módosítása</h3>
 

@@ -11,8 +11,11 @@ export class HomeComponent {
   to: string = 'Berlin';
   date: any = new Date();
   passengers: number = 1;
+  minDate = new Date();
+  maxDate = new Date();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   onSearch() {
     let formattedDate: string;

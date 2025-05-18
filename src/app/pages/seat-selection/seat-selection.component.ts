@@ -1,5 +1,14 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
+interface BookingData {
+  busId: string;
+  uid: string;
+  from: string;
+  to: string;
+  date: string;
+  createdAt: Date;
+  seat: number[];
+}
 
 @Component({
   selector: 'app-seat-selection',
@@ -32,7 +41,9 @@ export class SeatSelectionComponent implements OnInit {
   @Input() currentSeats?: number[];
 
   @Output() seatSelected = new EventEmitter<number[]>();  
-  @Output() cancel = new EventEmitter<void>();             
+  @Output() cancel = new EventEmitter<void>();   
+  @Output() bookingCompleted = new EventEmitter<void>();
+          
 
   seatMap: any[] = [];
   selectedSeats: number[] = [];
@@ -133,7 +144,7 @@ export class SeatSelectionComponent implements OnInit {
 
         this.seatSelected.emit(this.selectedSeats);
         this.cancel.emit();
-        
+        this.bookingCompleted.emit();
         alert(`Ülések módosítva: ${this.currentSeats.join(', ')} → ${this.selectedSeats.join(', ')}`);
       } else {
         const user = await this.firebaseService.getCurrentUser();
@@ -147,7 +158,7 @@ export class SeatSelectionComponent implements OnInit {
           return;
         }
 
-        const bookingData = {
+        const bookingData: BookingData = {
           busId: this.busId,
           uid: user.uid,
           from: this.firebaseService.lastSearch.from,

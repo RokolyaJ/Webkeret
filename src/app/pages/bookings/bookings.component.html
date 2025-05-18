@@ -34,7 +34,6 @@
             <div class="info-line">
               <span><strong>Ülés(ek):</strong> {{ booking.seat.join(', ') }}</span>
             </div>
-            
 
             <div class="button-group">
               <button mat-raised-button color="primary" (click)="startModifySeat(booking)">
@@ -43,32 +42,6 @@
               <button mat-raised-button color="warn" (click)="deleteBooking(booking)">
                 Foglalás törlése
               </button>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
-
-    <h3 class="page-title" style="margin-top: 40px;">Legutóbbi foglalások</h3>
-
-    <div *ngIf="recentBookings.length > 0" class="bookings-list">
-      <div *ngFor="let booking of recentBookings" class="booking-card">
-        <mat-card class="booking-item">
-          <mat-card-title>
-            Felhasználó: <strong>{{ booking.uid }}</strong>
-          </mat-card-title>
-          <mat-card-content>
-            <div class="info-line">
-              <span><strong>Honnan:</strong> {{ booking.from }}</span>
-            </div>
-            <div class="info-line">
-              <span><strong>Hová:</strong> {{ booking.to }}</span>
-            </div>
-            <div class="info-line">
-              <span><strong>Dátum:</strong> {{ booking.date | friendlyDate }}</span>
-            </div>            
-            <div class="info-line">
-              <span><strong>Ülés:</strong> {{ booking.seat }}</span>
             </div>
           </mat-card-content>
         </mat-card>

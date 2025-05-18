@@ -1,38 +1,53 @@
 <div class="search-container">
-  <div *ngFor="let bus of buses">
-    <mat-card class="bus-card" style="margin-bottom: 16px;">
-      <mat-card-content>
+  <ng-container *ngIf="!loading; else loadingTemplate">
+    <div *ngIf="buses.length > 0; else noResults">
+      <div *ngFor="let bus of buses">
+        <mat-card class="bus-card" style="margin-bottom: 16px;">
+          <mat-card-content>
 
-        <div class="left" style="float: left; width: 60%;">
-          <div class="logo" style="font-size: 20px; font-weight: bold;">GoBusTicket</div>
-          <div class="time-line" style="margin-top: 8px;">
-            <strong>{{ bus.departure }}</strong>
-            <span class="duration" style="margin: 0 8px;">→</span>
-            <strong>{{ bus.arrival }}</strong>
-          </div>
-          <div class="places" style="margin-top: 8px;">
-            {{ bus.departurePlace }} → {{ bus.arrivalPlace }}
-          </div>
-          <div class="tags" style="margin-top: 8px;">
-            <span>{{ bus.stops }} átszállás</span> | 
-            <span>{{ bus.seatsAvailable }} szabad hely</span>
-          </div>
-        </div>
+            <div class="left" style="float: left; width: 60%;">
+              <div class="logo" style="font-size: 20px; font-weight: bold;">GoBusTicket</div>
+              <div class="time-line" style="margin-top: 8px;">
+                <strong>{{ bus.departure }}</strong>
+                <span class="duration" style="margin: 0 8px;">→</span>
+                <strong>{{ bus.arrival }}</strong>
+              </div>
+              <div class="places" style="margin-top: 8px;">
+                {{ bus.departurePlace }} → {{ bus.arrivalPlace }}
+              </div>
+              <div class="tags" style="margin-top: 8px;">
+                <span>{{ bus.stops }} átszállás</span> |
+                <span>{{ bus.seatsAvailable }} szabad hely</span>
+              </div>
+            </div>
 
-        <div class="right" style="float: right; width: 35%; text-align: right;">
-          <div class="price" style="font-size: 20px; font-weight: bold;">
-            {{ bus.price | number:'1.0-0' }} Ft
-          </div>
-          <button mat-raised-button color="primary" style="margin-top: 10px;" (click)="openSeatSelection(bus.id)">
-            Tovább
-          </button>
-        </div>
+            <div class="right" style="float: right; width: 35%; text-align: right;">
+              <div class="price" style="font-size: 20px; font-weight: bold;">
+                {{ bus.price | number: '1.0-0' }} Ft
+              </div>
+              <button mat-raised-button color="primary" style="margin-top: 10px;" (click)="openSeatSelection(bus.id)">
+                Tovább
+              </button>
+            </div>
 
-        <div style="clear: both;"></div>
+            <div style="clear: both;"></div>
 
-      </mat-card-content>
-    </mat-card>
-  </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <ng-template #noResults>
+      <p style="text-align: center; margin-top: 2rem;">Nincs találat az adott keresésre.</p>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loadingTemplate>
+    <div style="text-align: center; margin-top: 2rem;">
+      <mat-spinner></mat-spinner>
+      <p>Keresés folyamatban...</p>
+    </div>
+  </ng-template>
 </div>
 
 <div class="seat-modal" *ngIf="selectedBusId">
